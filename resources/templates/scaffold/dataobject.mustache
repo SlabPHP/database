@@ -1,0 +1,22 @@
+<?php
+/**
+ * DataObject Model for {{className}}
+ *
+ * @author SlabPHP
+ * @package {{package}}
+ * @subpackage Models
+ */
+namespace {{namespace}};
+
+class DataObject extends \Slab\Database\Models\MySQL\DataObject
+{
+    const DATA_LOADER = '{{loaderName}}';
+
+    {{# fields}}
+    /**
+     * @var {{type}}
+     */
+    public ${{name}}{{default}};
+
+    {{/ fields}}
+}

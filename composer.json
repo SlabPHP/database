@@ -20,6 +20,9 @@
   "require-dev":{
     "phpunit/phpunit": "^6.5"
   },
+  "suggest": {
+    "mustache/mustache": "Enable mustache to use the scaffolding capabilities."
+  },
   "require": {
     "slabphp/component-interfaces": "^0.2",
     "psr/log": "^1.0"

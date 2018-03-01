@@ -1,0 +1,27 @@
+<?php
+/**
+ * Loader for {{className}}
+ *
+ * @author SlabPHP
+ * @package {{package}}
+ * @subpackage Models
+ */
+namespace {{namespace}};
+
+class Loader extends \Slab\Database\Models\MySQL\Loader
+{
+    const DATA_OBJECT_CLASS = '{{dataObjectName}}';
+
+    const TABLE_NAME = '{{tableName}}';
+
+    const ID_COLUMN = '{{primaryField}}';
+
+    /**
+     * @var string[]
+     */
+    protected $mapping = [
+    {{# fields}}
+        "{{column}}" => "{{mappedName}}",
+    {{/ fields}}
+    ];
+}
