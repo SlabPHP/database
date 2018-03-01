@@ -19,8 +19,8 @@ class JoinTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals('`test_season` as `s`', $join->getTable());
         $this->assertEquals('`s`.`test_id` as `s_test_id`,`s`.`updated_date` as `s_updated_date`,`s`.`season` as `s_season`', $join->getMappingSQL());
-        $this->assertEquals('join `test_season` as `s` on `s`.test_id = test ', $join->joinOn('test'));
-        $this->assertEquals('left join `test_season` as `s` on `s`.test_id = test ', $join->leftJoinOn('test'));
+        $this->assertEquals('join `test_season` as `s` on `s`.`test_id` = test ', $join->joinOn('test'));
+        $this->assertEquals('left join `test_season` as `s` on `s`.`test_id` = test ', $join->leftJoinOn('test'));
 
         $testObject = new \Slab\Tests\Database\Mocks\Models\Thing\DataObject();
         $testObject->id = 44;

@@ -212,33 +212,33 @@ class Loader extends \Slab\Database\Models\BaseLoader
     {
         if (empty($this->mapping)) {
             return '*';
-        } else {
-            $output = '';
-            foreach ($this->mapping as $column => $mappingField) {
-                if (!empty($output)) {
-                    $output .= ',';
-                }
+        }
 
-                if (!empty($aliasTable)) {
-                    $output .= $aliasTable . '.';
-                } else {
-                    $output .= '`' . static::TABLE_NAME . '`.';
-                }
-
-                $output .= "`" . $column . "`";
-
-                $colonPosition = strpos($mappingField, ':');
-                if ($colonPosition > 0) {
-                    $mappingField = substr($mappingField, 0, $colonPosition);
-                }
-
-                if ($aliasColumns && $column != $mappingField) {
-                    $output .= ' as `' . $mappedColumnPrefix . $mappingField . '`';
-                }
+        $output = '';
+        foreach ($this->mapping as $column => $mappingField) {
+            if (!empty($output)) {
+                $output .= ',';
             }
 
-            return $output;
+            if (!empty($aliasTable)) {
+                $output .= '`' . $aliasTable . '`.';
+            } else {
+                $output .= '`' . static::TABLE_NAME . '`.';
+            }
+
+            $output .= "`" . $column . "`";
+
+            $colonPosition = strpos($mappingField, ':');
+            if ($colonPosition > 0) {
+                $mappingField = substr($mappingField, 0, $colonPosition);
+            }
+
+            if ($aliasColumns && $column != $mappingField) {
+                $output .= ' as `' . $mappedColumnPrefix . $mappingField . '`';
+            }
         }
+
+        return $output;
     }
 
     /**
@@ -255,7 +255,7 @@ class Loader extends \Slab\Database\Models\BaseLoader
             $output .= '`' . $tableAlias . '`.';
         }
 
-        $output .= static::ID_COLUMN;
+        $output .= '`'.static::ID_COLUMN.'`';
 
         return $output;
     }
