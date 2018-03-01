@@ -178,3 +178,18 @@ Now the when the controller runs your return object will look like this, where t
     )
 
 Also notice that the mapped fields with :date after them get automatically translated into \DateTime objects. This is not exclusive to the join, it happens without it as well.
+
+### Scaffolding
+
+You can use the Scaffold class to build out the loader and dataobject models from the tables that are already created in your database. It requires you to include the mustache/mustache package. Assuming you have a driver already setup, you can quickly write the scaffold files out by doing something similar to the below:
+
+    $scaffold = new \Slab\Database\Models\MySQL\Scaffold($db);
+
+    $scaffold->writeScaffold('mysql_table_name', '\My\Site\Models', 'Thing', '/my/site/src/Models');
+
+This would create two files:
+
+    /my/site/src/Models/Thing/DataObject.php
+    /my/site/src/Models/Thing/Loader.php
+
+It will run a _DESCRIBE `mysql_table_name`_ sql query and use the output to build out both of them.
