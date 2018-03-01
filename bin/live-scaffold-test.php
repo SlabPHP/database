@@ -9,7 +9,7 @@
  * CREATE DATABASE IF NOT EXISTS `thingtest`;
  * GRANT ALL PRIVILEGES ON `thingtest`.* TO 'thingtest'@'%';
  * CREATE TABLE `thingtest`.`testingtable` ( `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `description` VARCHAR(255) NOT NULL , `created` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
- * CREATE TABLE `thingtest`.`test_season` ( `test_id` BIGINT NOT NULL , `updated_date` DATETIME NOT NULL , `season` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
+ * CREATE TABLE `thingtest`.`test_season` ( `test_id` BIGINT NOT NULL , `updated_date` DATETIME NOT NULL , `season` VARCHAR(255) NOT NULL, PRIMARY KEY (`test_id`) ) ENGINE = InnoDB;
  *
  * When done testing, delete the user and the database
  *
@@ -32,7 +32,7 @@ try
 
     $scaffold = new \Slab\Database\Models\MySQL\Scaffold($db);
 
-    mkdir(__DIR__.'/output');
+    if (!is_dir(__DIR__ . '/output')) mkdir(__DIR__.'/output');
 
     $scaffold->writeScaffold('testingtable', '\My\Site\\Models', 'Thing', __DIR__.'/output');
     $scaffold->writeScaffold('test_season', '\My\Site\\Models', 'Season', __DIR__.'/output');

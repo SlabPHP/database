@@ -126,13 +126,13 @@ class Scaffold
         $templateData = new \stdClass();
         $templateData->className = $className;
         $templateData->package = $segments[0];
-        $templateData->namespace = $baseModelNamespace;
+        $templateData->namespace = $baseModelNamespace. '\\' . $className;
         //$templateData->className = $segments[count($segments) - 1];
         $templateData->tableName = $tableName;
         $templateData->loaderName = '\\' . $baseModelNamespace . '\\' . $className . '\\Loader';
         $templateData->dataObjectName = '\\' . $baseModelNamespace . '\\' . $className . '\\DataObject';
         $templateData->fields = [];
-        $templateData->primaryField = 'id';
+        $templateData->primaryField = 'none';
 
         foreach ($info->result() as $column) {
 

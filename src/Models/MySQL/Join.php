@@ -80,6 +80,7 @@ class Join
             $databaseResult->{$this->fieldName} = $object;
         } catch (\Exception $e) {
             //This is fine, just an empty join
+            echo $e->getMessage();
         }
     }
 
@@ -111,7 +112,7 @@ class Join
      */
     public function joinOn($foreignKeyColumn)
     {
-        return 'join ' . $this->getTable() . ' on ' . $this->loader->getPrimaryKey($this->alias) . ' = ' . $foreignKeyColumn . "\n";
+        return 'join ' . $this->getTable() . ' on ' . $this->loader->getPrimaryKey($this->alias) . ' = ' . $foreignKeyColumn . ' ';
     }
 
     /**

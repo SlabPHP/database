@@ -10,7 +10,7 @@
  * GRANT ALL PRIVILEGES ON `thingtest`.* TO 'thingtest'@'%';
  * CREATE TABLE `thingtest`.`testingtable` ( `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NOT NULL , `description` VARCHAR(255) NOT NULL , `created` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
  * INSERT INTO `testingtable` (`id`, `name`, `description`, `created`) VALUES (NULL, 'Item One', 'Something about item one.', '2018-02-05 00:00:00'), (NULL, 'Item Two', 'Something about something else.', '2018-02-16 00:00:00');
- * CREATE TABLE `thingtest`.`test_season` ( `test_id` BIGINT NOT NULL , `updated_date` DATETIME NOT NULL , `season` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
+ * CREATE TABLE `thingtest`.`test_season` ( `test_id` BIGINT NOT NULL , `updated_date` DATETIME NOT NULL , `season` VARCHAR(255) NOT NULL, PRIMARY KEY (`test_id`) ) ENGINE = InnoDB;
  * INSERT INTO `test_season` (`test_id`, `updated_date`, `season`) VALUES ('1', '2018-02-07 00:00:00', 'Fall'), ('2', '2018-02-10 00:00:00', 'Summer')
  *
  * When done testing, delete the user and the database
