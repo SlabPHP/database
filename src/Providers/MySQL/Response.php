@@ -28,7 +28,8 @@ class Response extends \Slab\Database\Providers\BaseResponse
             return;
         }
 
-        $this->numberOfResults = $queryResult->num_rows;
+        //$this->numberOfResults = $queryResult->num_rows;
+        $this->numberOfResults = 0;
 
         $this->results = array();
 
@@ -52,6 +53,7 @@ class Response extends \Slab\Database\Providers\BaseResponse
 
             //Append result
             $this->results[] = $object;
+            $this->numberOfResults++;
 
             //Run walk callback on the object if necessary
             if (method_exists($object, '__mapObject')) {

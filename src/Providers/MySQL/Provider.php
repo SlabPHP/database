@@ -69,8 +69,26 @@ class Provider extends \Slab\Database\Providers\BaseProvider
             throw new \Slab\Database\Exceptions\Query("Query Failed: " . $queryString . " with no error.");
         }
 
+        $affectedRows = 0;
+        $error = '';
+
+        try
+        {
+            $affectedRows = $this->mysqli->affected_rows;
+            $error = $this->mysqli->error;
+        }
+        catch (\Throwable $exception)
+        {
+            //This means we're in a test environment
+        }
+
         $response = new Response();
-        $response->initializeFromQueryResults($result, $this->mysqli->affected_rows, $this->mysqli->error, $suggestedClass);
+        $response->initializeFromQueryResults(
+            $result,
+            $affectedRows,
+            $error,
+            $suggestedClass
+        );
 
         return $response;
     }
@@ -148,7 +166,7 @@ class Provider extends \Slab\Database\Providers\BaseProvider
      */
     public function buildDeleteQuery($table, $whereKey, $whereValue)
     {
-        $sql = "DELETE FROM " . $this->quoteSpecialName($table) . " WHERE " . $this->quoteSpecialName($whereKey) . " = " . $this->escapeItem($whereValue);
+        $sql = "DELETE FROM " . $this->quoteSpecialName($table) . " WHERE " . $this->quoteSpecialName($whereKey) . " = " . $this->escapeItem($whereValue) . ';';
 
 
         return $sql;
@@ -200,6 +218,8 @@ class Provider extends \Slab\Database\Providers\BaseProvider
         if (!empty($limit)) {
             $sql .= ' LIMIT ' . $limit;
         }
+
+        $sql .= ';';
 
         return $sql;
     }
