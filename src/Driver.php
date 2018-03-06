@@ -9,14 +9,14 @@
  */
 namespace Slab\Database;
 
-class Driver implements \Slab\Components\DataSourceDriverInterface
+class Driver implements \Slab\Components\Database\DriverInterface
 {
     const DATABASE_BINDING_TOKEN = '?';
 
     /**
      * Database provider
      *
-     * @var \Slab\Database\Providers\ProviderInterface
+     * @var \Slab\Components\Database\ProviderInterface
      */
     private $provider;
 
@@ -26,10 +26,10 @@ class Driver implements \Slab\Components\DataSourceDriverInterface
     private $log;
 
     /**
-     * @param Providers\ProviderInterface $provider
+     * @param \Slab\Components\Database\ProviderInterface $provider
      * @return $this
      */
-    public function setProvider(\Slab\Database\Providers\ProviderInterface $provider)
+    public function setProvider(\Slab\Components\Database\ProviderInterface $provider)
     {
         $this->provider = $provider;
 
@@ -42,7 +42,7 @@ class Driver implements \Slab\Components\DataSourceDriverInterface
     }
 
     /**
-     * @return Providers\ProviderInterface
+     * @return \Slab\Components\Database\ProviderInterface
      */
     public function getProvider()
     {
@@ -67,7 +67,7 @@ class Driver implements \Slab\Components\DataSourceDriverInterface
      * @param string[] $binders
      * @param string $suggestedClass
      *
-     * @return \Slab\Database\Providers\ResponseInterface
+     * @return \Slab\Components\Database\ResponseInterface
      */
     public function query($sql, $binders = array(), $suggestedClass = null, $debug = false)
     {
@@ -114,7 +114,7 @@ class Driver implements \Slab\Components\DataSourceDriverInterface
      * @param string $table
      * @param string[] $data
      *
-     * @return \Slab\Database\Providers\ResponseInterface
+     * @return \Slab\Components\Database\ResponseInterface
      */
     public function insert($table, $data)
     {
@@ -130,7 +130,7 @@ class Driver implements \Slab\Components\DataSourceDriverInterface
      * @param string $where
      * @param string $whereValue
      *
-     * @return \Slab\Database\Providers\ResponseInterface
+     * @return \Slab\Components\Database\ResponseInterface
      */
     public function delete($table, $where, $whereValue)
     {
@@ -146,7 +146,7 @@ class Driver implements \Slab\Components\DataSourceDriverInterface
      * @param array $data
      * @param string $where
      *
-     * @return \Slab\Database\Providers\ResponseInterface
+     * @return \Slab\Components\Database\ResponseInterface
      */
     public function update($table, $data, $where, $limit = null)
     {

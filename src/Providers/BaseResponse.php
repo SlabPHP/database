@@ -9,7 +9,7 @@
  */
 namespace Slab\Database\Providers;
 
-abstract class BaseResponse implements ResponseInterface
+abstract class BaseResponse implements \Slab\Components\Database\ResponseInterface
 {
     /**
      * Results, can be anything

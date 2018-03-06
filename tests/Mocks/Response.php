@@ -8,7 +8,7 @@
  */
 namespace Slab\Tests\Database\Mocks;
 
-class Response implements \Slab\Database\Providers\ResponseInterface
+class Response implements \Slab\Components\Database\ResponseInterface
 {
     /**
      * @var mixed

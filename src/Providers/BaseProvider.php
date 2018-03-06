@@ -9,7 +9,7 @@
  */
 namespace Slab\Database\Providers;
 
-abstract class BaseProvider implements ProviderInterface
+abstract class BaseProvider implements \Slab\Components\Database\ProviderInterface
 {
     /**
      * @param \Psr\Log\LoggerInterface $log

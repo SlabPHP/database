@@ -8,14 +8,14 @@
  */
 namespace Slab\Tests\Database\Mocks;
 
-class Provider implements \Slab\Database\Providers\ProviderInterface
+class Provider implements \Slab\Components\Database\ProviderInterface
 {
     /**
      * Perform a standard query
      *
      * @param string $queryString
      * @param string $suggestedClass
-     * @return \Slab\Database\Providers\ResponseInterface
+     * @return \Slab\Components\Database\ResponseInterface
      */
     public function query($queryString, $suggestedClass)
     {
